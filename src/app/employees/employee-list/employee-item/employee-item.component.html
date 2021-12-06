@@ -1,1 +1,15 @@
-<p>employee-item works!</p>
+<a href="#" class="list-group-item clearfix">
+    <div class="pull-left">
+        <h5 class="list-group-item-heading">{{ employee.id }}</h5>
+        <h4 class="list-group-item-heading">{{ employee.name }}</h4>
+        <h5 class="list-group-item-heading">{{ employee.age }}</h5>
+        <h5 class="list-group-item-heading">{{ employee.rating }}</h5>
+    </div>
+    <span class="pull-right">
+        <img 
+            [src]="employee.imagePath" 
+            alt="{{ employee.name }}" 
+            class="img-responsive" 
+            style="max-height: 80px;">
+    </span>
+</a>

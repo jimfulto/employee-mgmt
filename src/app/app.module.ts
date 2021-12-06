@@ -9,6 +9,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { EmployeeItemComponent } from './employees/employee-list/employee-item/employee-item.component';
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

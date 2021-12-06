@@ -1,1 +1,21 @@
-<p>employee-list works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <h4>Filter by name:</h4>
+        <input type="text" [(ngModel)]='listFilter'>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Employee</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-employee-item *ngFor="let employeeEl of filteredEmployees; let i = index" [employee]="employeeEl" [index]="i"></app-employee-item>
+    </div>
+</div>
+
+<!-- src="{{ employee.imagePath }}" -->
+
