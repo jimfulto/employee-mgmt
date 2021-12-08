@@ -10,6 +10,7 @@ import { EmployeeItemComponent } from './employees/employee-list/employee-item/e
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 import { FormsModule } from '@angular/forms';
+import { StarComponent } from '../app/shared/star.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     EmployeeListComponent,
     EmployeeItemComponent,
     EmployeeDetailComponent,
-    EmployeeEditComponent
+    EmployeeEditComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,
