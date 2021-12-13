@@ -1,30 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Employee } from '../employee.model';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnDestroy {
   private _listFilter = '';
   filteredEmployees: Employee[] = [];
-  employees: Employee[] = [
-    new Employee(741569, 
-                'Matthew Murdock', 
-                'Hard working!', 
-                'https://tse2.mm.bing.net/th?id=OIP.gWjXX5DUCl1PDAU9uI0a2QHaJ5&pid=Api&P=0&w=300&h=300', 
-                32,
-                'male',
-                3.8),
-    new Employee(238457, 
-                'Jim Butler', 
-                'Lazy!', 
-                'https://aestheticblasphemy.com/static/media/images/Blasphemous/2017/10/04/overworkkk.jpg', 
-                30,
-                'male',
-                2.6)
-  ];
+  employees: Employee[] = [];
+  subscription: Subscription;
+  // employees: Employee[] = [
+  //   new Employee(741569, 
+  //               'Matthew Murdock', 
+  //               'Hard working!', 
+  //               'https://tse2.mm.bing.net/th?id=OIP.gWjXX5DUCl1PDAU9uI0a2QHaJ5&pid=Api&P=0&w=300&h=300', 
+  //               32,
+  //               'male',
+  //               3.8),
+  //   new Employee(238457, 
+  //               'Jim Butler', 
+  //               'Lazy!', 
+  //               'https://aestheticblasphemy.com/static/media/images/Blasphemous/2017/10/04/overworkkk.jpg', 
+  //               30,
+  //               'male',
+  //               2.6)
+  // ];
 
   // employees: Employee[] = [
   //   {
@@ -47,9 +52,16 @@ export class EmployeeListComponent implements OnInit {
   //   }
   // ]
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.subscription = this.employeeService.employeesChanged
+      .subscribe(
+        (employees: Employee[]) => {
+          this.employees = employees;
+        }
+      );
+      this.employees = this.employeeService.getEmployees();
     this.filteredEmployees = this.employees;
   }
 
@@ -66,6 +78,14 @@ export class EmployeeListComponent implements OnInit {
     filterBy = filterBy.toLocaleLowerCase();
     return this.employees.filter((employee: Employee) =>
       employee.name.toLocaleLowerCase().includes(filterBy));
+  }
+
+  onNewEmployee() {
+    this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

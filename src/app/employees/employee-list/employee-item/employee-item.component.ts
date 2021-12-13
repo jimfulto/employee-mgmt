@@ -8,6 +8,7 @@ import { Employee } from '../../employee.model';
 })
 export class EmployeeItemComponent implements OnInit {
   @Input() employee: Employee;
+  @Input() index: number;
 
   constructor() { }
 

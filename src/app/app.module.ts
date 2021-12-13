@@ -9,8 +9,9 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { EmployeeItemComponent } from './employees/employee-list/employee-item/employee-item.component';
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StarComponent } from '../app/shared/star.component';
+import { EmployeesStartComponent } from './employees/employees-start/employees-start.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { StarComponent } from '../app/shared/star.component';
     EmployeeItemComponent,
     EmployeeDetailComponent,
     EmployeeEditComponent,
-    StarComponent
+    StarComponent,
+    EmployeesStartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

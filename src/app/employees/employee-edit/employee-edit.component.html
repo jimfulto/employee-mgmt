@@ -1,1 +1,79 @@
-<p>employee-edit works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="id">ID</label>
+                    <input type="number" class="form-control" formControlName="id">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" formControlName="name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="imagePath">Image URL</label>
+                        <input type="text" id="imagePath" class="form-control" formControlName="imagePath" #imagePath>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="imagePath.value" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea type="text" id="description" class="form-control" rows="6" formControlName="description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control" formControlName="age">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label for="rating">Rating</label>
+                            <input type="number" class="form-control" formControlName="rating">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-xs-12">
+                    <label for="gender">Gender</label>
+                    <div>
+                        <input type="radio" value="Male">
+                        <label for="html">Male</label><br>
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <input type="radio" value="Female">
+                    <label for="css">Female</label><br>
+                </div>
+            </div> -->
+        </form>
+    </div>
+</div>
+
+<!-- <select class="form-control" formControlName="model" required>
+    <option value="">Please select a bike</option>
+    <option *ngFor="let m of models"
+            [value]="m">
+            {{m}}
+    </option>
+  </select> -->
