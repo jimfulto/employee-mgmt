@@ -11,14 +11,14 @@ export class EmployeeService {
             'Hard working!', 
             'https://tse2.mm.bing.net/th?id=OIP.gWjXX5DUCl1PDAU9uI0a2QHaJ5&pid=Api&P=0&w=300&h=300', 
             32,
-            'Male',
+            'male',
             3.8),
         new Employee(238457, 
             'Jim Butler', 
             'Lazy!', 
             'https://aestheticblasphemy.com/static/media/images/Blasphemous/2017/10/04/overworkkk.jpg', 
             30,
-            'Male',
+            'male',
             2.6)
     ];
 
@@ -32,4 +32,15 @@ export class EmployeeService {
     getEmployee(index: number) {
         return this.employees[index];
     }
+
+    addEmployee(employee: Employee) {
+        this.employees.push(employee);
+        this.employeesChanged.next(this.employees.slice());
+    }
+
+    updateEmployee(index: number, newEmployee: Employee) {
+        this.employees[index] = newEmployee;
+        this.employeesChanged.next(this.employees.slice());
+    }
+
 }

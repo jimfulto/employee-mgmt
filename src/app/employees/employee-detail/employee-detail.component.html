@@ -32,10 +32,18 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <ul class="dropdown-menu">
-            <li><a style="cursor:pointer;">Edit Employee</a></li>
-            <li><a style="cursor:pointer;">Delete Hashira</a></li>
-        </ul>
+        <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onEditEmployee()">
+            Edit Employee
+        </button>
+        |
+        <button
+            type="button"
+            class="btn btn-danger">
+            Delete Employee
+        </button>
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <form>
+        <form [formGroup]="employeeEditForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
                     <label for="id">ID</label>
@@ -45,27 +45,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-2">
-                            <label for="rating">Rating</label>
+                        <div class="col-xs-3">
+                            <label for="rating">Rating(out of 5)</label>
                             <input type="number" class="form-control" formControlName="rating">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="radio" *ngFor="let gender of genders">
+                                <label for="gender">
+                                    <input formControlName="gender" type="radio" [value]="gender">{{ gender }}
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-xs-12">
-                    <label for="gender">Gender</label>
-                    <div>
-                        <input type="radio" value="Male">
-                        <label for="html">Male</label><br>
-                    </div>
-                    <div>
-                        
-                    </div>
-                    <input type="radio" value="Female">
-                    <label for="css">Female</label><br>
-                </div>
-            </div> -->
         </form>
     </div>
 </div>

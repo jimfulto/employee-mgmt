@@ -13,6 +13,7 @@ const routes: Routes = [
       { path: '', component: EmployeesStartComponent },
       { path: 'new', component: EmployeeEditComponent },
       { path: ':id', component: EmployeeDetailComponent },
+      { path: ':id/edit', component: EmployeeEditComponent }
     ] },
     { path: 'auth', component: AuthComponent }
 ];
