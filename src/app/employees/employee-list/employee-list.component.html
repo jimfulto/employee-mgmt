@@ -13,6 +13,8 @@
 <hr>
 <div class="row">
     <div class="col-xs-12">
+        <!-- here the filter is not working because we are binding to employees -->
+        <!-- changed this as was not able to update the list after change in form -->
         <app-employee-item *ngFor="let employeeEl of filteredEmployees; let i = index" [employee]="employeeEl" [index]="i"></app-employee-item>
     </div>
 </div>

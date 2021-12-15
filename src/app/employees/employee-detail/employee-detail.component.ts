@@ -27,6 +27,9 @@ export class EmployeeDetailComponent implements OnInit {
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
-  
+  onDeleteEmployee() {
+    this.employeeService.deleteEmployee(this.id);
+    this.router.navigate(['/employees']);
+  }
 
 }

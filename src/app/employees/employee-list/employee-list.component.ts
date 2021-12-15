@@ -54,14 +54,16 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   constructor(private employeeService: EmployeeService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.subscription = this.employeeService.employeesChanged
       .subscribe(
         (employees: Employee[]) => {
           this.employees = employees;
+          this.filteredEmployees = employees;
         }
       );
       this.employees = this.employeeService.getEmployees();
+    //this.filteredEmployees = this.employeeService.getEmployees();
     this.filteredEmployees = this.employees;
   }
 

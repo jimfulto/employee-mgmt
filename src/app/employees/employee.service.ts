@@ -12,14 +12,14 @@ export class EmployeeService {
             'https://tse2.mm.bing.net/th?id=OIP.gWjXX5DUCl1PDAU9uI0a2QHaJ5&pid=Api&P=0&w=300&h=300', 
             32,
             'male',
-            3.8),
+            4),
         new Employee(238457, 
             'Jim Butler', 
             'Lazy!', 
             'https://aestheticblasphemy.com/static/media/images/Blasphemous/2017/10/04/overworkkk.jpg', 
             30,
             'male',
-            2.6)
+            3)
     ];
 
     constructor() {}
@@ -40,6 +40,11 @@ export class EmployeeService {
 
     updateEmployee(index: number, newEmployee: Employee) {
         this.employees[index] = newEmployee;
+        this.employeesChanged.next(this.employees.slice());
+    }
+
+    deleteEmployee(index: number) {
+        this.employees.splice(index, 1);
         this.employeesChanged.next(this.employees.slice());
     }
 

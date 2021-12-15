@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -15,7 +15,9 @@ export class EmployeeEditComponent implements OnInit {
   editMode = false;
 
 
-  constructor(private route: ActivatedRoute, private employeeService: EmployeeService) { }
+  constructor(private route: ActivatedRoute, 
+              private employeeService: EmployeeService,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -29,11 +31,17 @@ export class EmployeeEditComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.employeeEditForm);
     if(this.editMode) {
       this.employeeService.updateEmployee(this.id, this.employeeEditForm.value);
     } else {
       this.employeeService.addEmployee(this.employeeEditForm.value);
     }
+    this.onCancel();
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   private initForm() {

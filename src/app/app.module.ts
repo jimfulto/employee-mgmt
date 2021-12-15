@@ -12,6 +12,7 @@ import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StarComponent } from '../app/shared/star.component';
 import { EmployeesStartComponent } from './employees/employees-start/employees-start.component';
+import { EmployeeService } from './employees/employee.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { EmployeesStartComponent } from './employees/employees-start/employees-s
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

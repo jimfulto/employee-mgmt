@@ -59,6 +59,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit" [disabled]="!employeeEditForm.valid" class="btn btn-success">Save</button>|
+                            <button type="button" class="btn btn-primary"(click)="onCancel()">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
