@@ -1,12 +1,17 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Employee } from "../employees/employee.model";
 import { EmployeeService } from "../employees/employee.service";
-import { tap } from 'rxjs/operators';
+import { exhaustMap, take, tap } from 'rxjs/operators';
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
-    constructor(private http: HttpClient, private employeeService: EmployeeService) {}
+    constructor(
+        private http: HttpClient, 
+        private employeeService: EmployeeService,
+        private authService: AuthService
+    ) {}
 
     storeEmployees() {
         const employees = this.employeeService.getEmployees();
@@ -17,11 +22,11 @@ export class DataStorageService {
     }
 
     fetchEmployees() {
-        return this.http.get<Employee[]>('https://ng-emmt-default-rtdb.firebaseio.com/employees.json')
-            .pipe(
+            return this.http.get<Employee[]>('https://ng-emmt-default-rtdb.firebaseio.com/employees.json',
+            ).pipe(
                 tap(employees => {
                     this.employeeService.setEmployees(employees);
                 })
-            )
+            );
     }
 }
