@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 import { EmployeesResolverService } from './employees/employees-resolver.service';
@@ -9,7 +10,7 @@ import { EmployeesComponent } from './employees/employees.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/employees', pathMatch: 'full' },
-  { path: 'employees', component: EmployeesComponent,
+  { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: EmployeesStartComponent },
       { path: 'new', component: EmployeeEditComponent },

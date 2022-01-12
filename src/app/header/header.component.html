@@ -10,7 +10,7 @@
                 <li><a routerLinkActive="active" routerLink="/employees" *ngIf="isAuthenticated">Employees</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <button class="btn btn-danger" *ngIf="isAuthenticated">Logout</button>|
+                <button class="btn btn-danger" *ngIf="isAuthenticated" (click)="onLogout()">Logout</button>|
                 <button class="btn btn-warning" (click)="onSaveData()" *ngIf="isAuthenticated">Save Data</button>|
                 <button class="btn btn-warning" (click)="onFetchData()" *ngIf="isAuthenticated">Fetch Data</button>
                 <!-- <div class="dropdown">
